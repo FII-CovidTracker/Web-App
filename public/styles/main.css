@@ -1,0 +1,88 @@
+:root {
+    /* colors */
+    --primary-color: #FAFAFA;
+    --primary-color-transparent: rgba(250, 250, 250, 0.5);
+    --primary-text-color: #3388cc;
+    --primary-text-color-border: rgba(51, 136, 204, 0.15);
+    --primary-text-color-transparent: rgba(51, 136, 204, 0.5);
+    --primary-text-color-darker: #225d8c;
+
+    --secondary-color: #EEEEEE;
+    --secondary-color-transparent: rgba(238, 238, 238, 0.5);
+
+    --third-color: #DDDDDD;
+
+    --background-color: var(--secondary-color);
+
+    /* custom elements */
+    --banner-video-background-color: #000000;
+
+    /* shadows */
+    --box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
+    --underline:
+        0 -2px 0 0 currentColor inset,
+        0 -3px 0 0 transparent inset;
+
+    /* fonts */
+    --font-size: 16px;
+    --primary-font: 'Source Sans Pro', sans-serif;
+    --secondary-font: 'Roboto Mono', monospace;;
+
+    /* gaps */
+    --general-gap: 1em;
+    --general-gap-lg: 1.50em;
+    --general-gap-md: 0.75em;
+    --general-gap-hf: 0.50em;
+    --general-gap-sm: 0.25em;
+    --gap: 30px;
+    --gap-md: 23px;
+    --gap-hf: 15px;
+
+    /* radius */
+    --border-radius: 3px;
+
+    /* sizes */
+    --container-width: 1200px;
+    --header-height: 75px;
+    --header-logo-height: 50px;
+    --nav-height: 50px;
+    --nav-fixed-height: 60px;
+    --nav-logo-height: 35px;
+    --burger-line-width: 13px;
+    --burger-line-height: 2px;
+    --burger-line-difference: 4px;
+
+    /* z-indexes */
+    --header-z-index: 3;
+    --nav-z-index: 2;
+}
+
+body {
+    font-size: var(--font-size);
+    font-family: var(--primary-font);
+    background-color: var(--background-color);
+
+    padding-top: calc(var(--header-height) + var(--nav-height));
+
+    -webkit-tap-highlight-color: var(--primary-text-color-transparent);
+
+     min-height: 120vh;
+}
+
+button {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: var(--font-size);
+    font-family: var(--primary-font);
+    padding: var( --general-gap-sm) var( --general-gap-hf);
+    border: 1px solid var(--primary-text-color);
+    border-radius: var(--border-radius);
+    color: var(--primary-text-color);
+    background-color: transparent;
+}
+
+::selection {
+    color: var(--secondary-color);
+    background-color: var(--primary-text-color);
+}
