@@ -3,29 +3,28 @@ import {
   FaBuilding as IconAuthority,
   FaUserAstronaut as IconUser
 } from 'react-icons/fa'
+import {
+  HiCursorClick as IconClick
+} from 'react-icons/hi'
 
-import { LocaleType, API_TYPE } from '../interfaces'
+import { LocaleType } from '../interfaces'
 
-import API from '../lib/fetch'
 import LOCALE from '../lib/locale'
+import TYPES from '../lib/types'
+import TRANSLATION from '../lib/translation'
 
 import Layout from '../components/Layout'
 import Banner from '../components/Banner'
 import Container from '../components/Container'
-import TYPES from "../lib/types";
-import TRANSLATION from "../lib/translation";
 
 interface HomePageProps {
   locale: LocaleType,
-  data: {
-    banner: API_TYPE,
-    news: API_TYPE
-  }
+  data: any
 }
 
-const HomePage: FC<HomePageProps> = ({ locale, data}) => {
+const HomePage: FC<HomePageProps> = ({ locale, data }) => {
   const banner = data.banner
-  const container = { id: 'news', content: data.news }
+  const container = { id: 'home', content: data }
   const intro = [
     <div className="applications" key="applications">
       <div><IconUser/></div>
@@ -45,7 +44,10 @@ const HomePage: FC<HomePageProps> = ({ locale, data}) => {
         <p>{TRANSLATION.intro.authority.advice[locale]}</p>
       </div>
       <div>
-        <button>Access the portal for Authorities</button>
+        <button>
+          <span>{TRANSLATION.intro.authority.accessPortal[locale]}</span>
+          <IconClick/>
+        </button>
       </div>
     </div>
   ]
@@ -63,8 +65,7 @@ const HomeContext = (locale: LocaleType) => ({
     props: {
       locale,
       data: {
-        banner: { type: TYPES.BANNER, data: { type: 'intro' } },
-        news: await API.NEWS.getAll(locale),
+        banner: { type: TYPES.BANNER, data: { type: 'intro' } }
       }
     }
   })

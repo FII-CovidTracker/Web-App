@@ -17,6 +17,8 @@
 
     --third-color: #DDDDDD;
 
+    --forth-color: #333333;
+
     --background-color: var(--secondary-color);
 
     /* custom elements */
@@ -49,6 +51,7 @@
 
     /* sizes */
     --container-width: 1200px;
+    --container-min-height: 50vh;
     --header-height: 75px;
     --header-logo-height: 50px;
     --nav-height: 50px;
@@ -91,7 +94,8 @@ body {
 
 #__grid {
     display: grid;
-    grid-template-rows: auto auto 1fr;
+    grid-template-rows: auto 1fr auto;
+    gap: var(--general-gap-lg);
     justify-content: stretch;
 }
 

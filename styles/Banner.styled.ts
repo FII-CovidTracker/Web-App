@@ -15,6 +15,8 @@ export default styled.div`
         max-width: var(--container-width);
         display: grid;
         align-content: center;
+        border-bottom-left-radius: 2px;
+        border-bottom-right-radius: 2px;
     }
     
     &.image {

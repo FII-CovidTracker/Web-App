@@ -2,13 +2,19 @@ import styled from 'styled-components'
 
 export default styled.div`
     display: grid;
-    margin: var(--general-gap) auto 0 auto;
+    margin: 0 auto;
     grid-template-columns: 1fr auto;
     width: 100%;
-    max-width: calc(var(--container-width));
+    max-width: var(--container-width);
+    min-height: var(--container-min-height);
     padding: var(--general-gap);
     padding-bottom: 0;
     gap: var(--gap);
+    background-color: var(--primary-color);
+    box-shadow: var(--box-shadow);
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    overflow: hidden;
 
     & > .content, & > aside  {
         & > h1 {
@@ -72,10 +78,11 @@ export default styled.div`
         grid-template-columns: auto 180px 1fr 315px;
         grid-column-start: 1; grid-column-end: -1;
         column-gap: var(--general-gap-md);
-        margin: calc(-2 * var(--general-gap)) calc(-1 * var(--general-gap)) 0 calc(-1 * var(--general-gap));
+        margin: calc(-1 * var(--general-gap)) calc(-1 * var(--general-gap)) 0 calc(-1 * var(--general-gap));
         box-shadow: var(--box-shadow-inset);
         align-items: center;
         font-family: var(--secondary-font);
+        border-radius: 2px;
         
         & > div { 
           padding-top: var(--general-gap);
@@ -134,21 +141,44 @@ export default styled.div`
         & > div {
           color: var(--secondary-color-semitransparent);
         
-          &:first-child {
-            & > * {
-              //color: var(--accent-color);
-            }
-          }
-          
           &:last-child {
-            & > * {
+            margin: 0 1px;
+          
+            & button {
+              display: grid;
+              grid-template-columns: 1fr auto;
+              padding: 0 var(--general-gap-md);
+              height: 43px;
               width: 100%;
+              color: var(--secondary-color);
+              border-color: var(--secondary-color-transparent);
+              border-width: 2px;
+              font-size: 110%;
+              font-weight: 600;
+              transition: all 150ms ease-in-out;
+              
+              &:hover {
+                box-shadow: var(--box-shadow);
+                color: var(--accent-color);
+                background-color: var(--secondary-color-semitransparent);
+              }
+              
+              span:first-child {
+                text-align: left;
+              }
             }
           }
         }
     }
     
-    &.main--ro {
+    &.main--home {
+      margin: var(--general-gap) auto 0 auto;
+      min-height: 0;
+      background-color: transparent;
+      box-shadow: none;
+    }
+    
+    &.main--locale-ro {
       & > .authority,
       & > .applications {
         grid-template-columns: auto 220px 1fr 315px;

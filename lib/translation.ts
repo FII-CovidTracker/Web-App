@@ -18,6 +18,22 @@ function translation() {
                 [LOCALE.EN]: 'Read more'
             }
         },
+        footer: {
+            madeWith: [
+                {
+                    [LOCALE.RO]: 'Făcut cu',
+                    [LOCALE.EN]: 'Made with'
+                },
+                {
+                    [LOCALE.RO]: 'în',
+                    [LOCALE.EN]: 'in'
+                }
+            ],
+            development: {
+                [LOCALE.RO]: 'Dezvoltare proiect',
+                [LOCALE.EN]: 'Project development'
+            }
+        },
         header: {
             title: {
                 [LOCALE.RO]: ['Covid', 'Tracker'],
@@ -34,6 +50,10 @@ function translation() {
             connect: {
                 [LOCALE.RO]: 'Conectează-te!',
                 [LOCALE.EN]: 'Join!'
+            },
+            settings: {
+                [LOCALE.RO]: 'Preferințe',
+                [LOCALE.EN]: 'Preferences'
             }
         },
         home: {
@@ -59,6 +79,10 @@ function translation() {
                 advice: {
                     [LOCALE.RO]: 'Folosiți acest portal web pentru a adăuga știri și alte informații importante pentru protecția cetățenilor!',
                     [LOCALE.EN]: 'Use this web-portal to add reliable news and information for the protection of citizens!'
+                },
+                accessPortal: {
+                    [LOCALE.RO]: 'Accesează portalul',
+                    [LOCALE.EN]: 'Access the portal'
                 }
             }
         },

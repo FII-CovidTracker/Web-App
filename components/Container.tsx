@@ -17,13 +17,14 @@ type ContainerProps = {
     after?: ReactNode
 }
 
-const Container: FC<ContainerProps> = ({data, before, after, children}) => {
+const Container: FC<ContainerProps> = ({ data, before, after, children }) => {
     if (!data) data = { id: null, content: API_IGNORE }
     const locale = useLocale()
     const content = new ContainerRender(data, locale).element
 
+
     return (
-        <Styles className={`main main--${locale}`}>
+        <Styles className={`main main--locale-${locale}` + (data.id ? ` main--${data.id}` : null)}>
             {before}
             {content || children ? (
                 <main className="content">

@@ -1,8 +1,9 @@
-import React, { FC, useState } from 'react'
+import React, { FC, PropsWithChildren, useState } from 'react'
 import {
     BiHome as IconHome,
     BiNews as IconNews,
-    BiUserCircle as IconConnect,
+    // BiUserCircle as IconConnect,
+    BiCog as IconSettings,
     BiInfoCircle as IconAbout
 } from 'react-icons/bi'
 import {
@@ -44,7 +45,8 @@ const HeaderLogo: FC<{ disableTitle?: boolean }> = ({ disableTitle } = { disable
     )
 }
 
-const HeaderNav: FC = () => {
+const HeaderNav: FC<PropsWithChildren<any>> = (props) => {
+
     const { pathname } = useRouter()
     const locale = useLocale()
     const nav = {
@@ -64,13 +66,13 @@ const HeaderNav: FC = () => {
     }
 
     return (
-        <nav>
+        <nav {...props}>
             {nav.sections.map((page, index) => {
                 const href = TRANSLATION[page].slug[locale]
                 return (
                     <Link href={href} key={index}>
                         <a className={'link' + (pathname === href ? ' active' : '')}>
-                            {nav.icon(page)}
+                            {props.disableIcons ? null : nav.icon(page)}
                             {TRANSLATION[page][locale]}
                         </a>
                     </Link>
@@ -98,8 +100,8 @@ const HeaderConnect: FC = () => {
     return (
         <div className="connect-container">
             <button>
-                <IconConnect />
-                {TRANSLATION.header.connect[locale]}
+                <IconSettings />
+                {TRANSLATION.header.settings[locale]}
             </button>
         </div>
     )
@@ -151,3 +153,7 @@ const Header: FC = () => {
 }
 
 export default Header
+
+const Logo = HeaderLogo;
+const Nav = HeaderNav;
+export { Logo, Nav }
