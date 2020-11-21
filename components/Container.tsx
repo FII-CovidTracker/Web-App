@@ -12,21 +12,27 @@ import Styles from '../styles/Container.styled'
 
 type ContainerProps = {
     data?: ContainerData,
-    children?: ReactNode
+    children?: ReactNode,
+    before?: ReactNode,
+    after?: ReactNode
 }
 
-const Container: FC<ContainerProps> = ({data, children}) => {
+const Container: FC<ContainerProps> = ({data, before, after, children}) => {
     if (!data) data = { id: null, content: API_IGNORE }
     const locale = useLocale()
     const content = new ContainerRender(data, locale).element
 
     return (
-        <Styles className="main">
-            <main className="content">
-                {content}
-                {children}
-            </main>
-            {/*<aside className="aside"></aside>*/}
+        <Styles className={`main main--${locale}`}>
+            {before}
+            {content || children ? (
+                <main className="content">
+                    {content}
+                    {children}
+                </main>
+            ) : null}
+            {/*<aside className="aside">aside</aside>*/}
+            {after}
         </Styles>
     )
 }

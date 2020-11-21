@@ -50,7 +50,7 @@ const NewsContext = (locale: LocaleType) => ({
     })
 })
 
-const { getStaticPaths, getStaticProps } = NewsContext(LOCALE.RO)
+const { getStaticPaths, getStaticProps } = NewsContext(LOCALE.EN)
 
 export default NewsPage
 export { NewsContext, getStaticPaths, getStaticProps }

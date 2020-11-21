@@ -47,9 +47,11 @@ const Layout: FC<LayoutProps> = ({ locale, children }) => {
             <link rel="stylesheet" href="/styles/reset.css" />
             <link rel="stylesheet" href="/styles/main.css" />
         </Head>
-        <Header />
-        {children}
-        <Footer />
+        <div id="__grid">
+            <Header />
+            <div>{children}</div>
+            <Footer />
+        </div>
         </Locale>
     )
 }

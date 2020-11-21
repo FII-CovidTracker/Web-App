@@ -44,6 +44,24 @@ function translation() {
                 [LOCALE.EN]: '',
             }
         },
+        intro: {
+            user: {
+                [LOCALE.RO]: 'Sunt un Utilizator',
+                [LOCALE.EN]: 'I am a User',
+                advice: {
+                    [LOCALE.RO]: 'Descarcă aplicația noastră pentru a te proteja împotriva noului Coronavirus.',
+                    [LOCALE.EN]: 'Download our tracking application in order to protect yourself against the new Coronavirus.'
+                }
+            },
+            authority: {
+                [LOCALE.RO]: 'Reprezint o Autoritate',
+                [LOCALE.EN]: 'I am an Authority',
+                advice: {
+                    [LOCALE.RO]: 'Folosiți acest portal web pentru a adăuga știri și alte informații importante pentru protecția cetățenilor!',
+                    [LOCALE.EN]: 'Use this web-portal to add reliable news and information for the protection of citizens!'
+                }
+            }
+        },
         language: {
             [LOCALE.RO]: 'Română',
             [LOCALE.EN]: 'English',
@@ -67,7 +85,7 @@ function translation() {
         for (const lang of Object.keys(translation[key].slug)) {
             const slug = translation[key].slug[lang]
             translation[key].slug[lang] = `/${translation[key].slug[lang]}`
-            if (lang === LOCALE.RO) continue
+            if (lang === LOCALE.EN) continue
 
             translation[key].slug[lang] = `/${lang}` + (slug.length > 1 ? `${translation[key].slug[lang]}` : '')
         }

@@ -33,10 +33,16 @@ export default styled.header`
 			& .icon {
 				display: flex;
 				margin-right: var(--general-gap);
+				background-color: var(--primary-text-color-border);
+                border-radius: 50%;
+                width: 51px;
+                place-items: center;
+                place-content: center;
 
 				img {
+				    margin-top: 2px;
 					height: var(--header-logo-height);
-					width: auto;
+					width: 37px;
 					object-fit: contain;
 				}
 			}
@@ -55,6 +61,7 @@ export default styled.header`
 				}
 				& > span:last-child {
 					font-size: 1.2em;
+					margin-top: -2px;
 				}
 			}
 		}
@@ -142,7 +149,8 @@ export default styled.header`
 			}
 
 			&:hover {
-				background-color: var(--primary-text-color-border);
+			    color: var(--secondary-color-semitransparent);
+				background-color: var(--accent-color);
 			}
 
 			.icon {

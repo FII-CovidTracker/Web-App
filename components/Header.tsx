@@ -17,7 +17,7 @@ import TRANSLATION from '../lib/translation'
 
 import { useLocale } from '../context/Locale'
 
-import Language from "./Language";
+import Language from './Language'
 import Styles from '../styles/Header.styled'
 
 const HeaderLogo: FC<{ disableTitle?: boolean }> = ({ disableTitle } = { disableTitle: false }) => {
@@ -27,13 +27,11 @@ const HeaderLogo: FC<{ disableTitle?: boolean }> = ({ disableTitle } = { disable
         <div className="logo-container">
             <Link href={TRANSLATION.home.slug[locale]}>
                 <a className="logo">
+                    <div className="icon">
+                        <img src="/assets/logo.png" alt="Logo" />
+                    </div>
                     {
-                        disableTitle
-                        ? (
-                            <div className="icon">
-                                <img src="/assets/logo.png" alt="Logo" />
-                            </div>)
-                        : (
+                        disableTitle ? null : (
                             <div className={`title title--${locale}`}>
                                 <span>{TRANSLATION.header.title[locale][0]}</span>
                                 <span>{TRANSLATION.header.title[locale][1]}</span>
