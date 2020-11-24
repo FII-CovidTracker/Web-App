@@ -3,30 +3,30 @@ import styled from 'styled-components'
 export default styled.span`
     position: relative;
     display: block;
-    width: var(--burger-line-width);
+    width: var(--ctk-burger-line-width);
     transition: background-color 100ms ease-in-out;
 
     &, &::before, &::after {
-        height: var(--burger-line-height);
-        background-color: var(--primary-text-color);
+        height: var(--ctk-burger-line-height);
+        background-color: var(--ctk-primary-text-color);
     }
 
     &::before, &::after {
         position: absolute;
         content: '';
-        left: calc(-1 * var(--burger-line-difference));
-        width: calc(var(--burger-line-width) + var(--burger-line-difference));
+        left: calc(-1 * var(--ctk-burger-line-difference));
+        width: calc(var(--ctk-burger-line-width) + var(--ctk-burger-line-difference));
         transition:
             transform 200ms ease-in-out,
             top 200ms ease-in-out;
     }
 
     &::before {
-        top: calc(-3 * var(--burger-line-height));
+        top: calc(-3 * var(--ctk-burger-line-height));
     }
 
     &::after {
-        top: calc(3 * var(--burger-line-height));
+        top: calc(3 * var(--ctk-burger-line-height));
     }
 
     &.active {

@@ -90,6 +90,10 @@ function translation() {
             [LOCALE.RO]: 'Română',
             [LOCALE.EN]: 'English',
         },
+        login: {
+            [LOCALE.RO]: 'Conectează-te',
+            [LOCALE.EN]: 'Login'
+        },
         news: {
             [LOCALE.RO]: 'Noutăți',
             [LOCALE.EN]: 'News',
@@ -98,9 +102,21 @@ function translation() {
                 [LOCALE.EN]: 'news',
             }
         },
+        password: {
+            [LOCALE.RO]: 'Parolă',
+            [LOCALE.EN]: 'Password'
+        },
+        portal: {
+            [LOCALE.RO]: 'Portalul dedicat autorităților',
+            [LOCALE.EN]: 'Authorities portal'
+        },
         title: {
             [LOCALE.RO]: 'FII-CovidTracker',
-            [LOCALE.EN]: 'FII-CovidTracker',
+            [LOCALE.EN]: 'FII-CovidTracker'
+        },
+        username: {
+            [LOCALE.RO]: 'Nume de utilizator',
+            [LOCALE.EN]: 'Username'
         }
     }
 

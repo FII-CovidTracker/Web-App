@@ -3,13 +3,13 @@ import styled from 'styled-components'
 const OptionLanguageStyle = styled.span`
     display: flex;
     align-items: center;
-    gap: var(--general-gap-hf);
+    gap: var(--ctk-general-gap-hf);
     padding: 8px 12px;
     border-radius: 0;
     
     &.active {
         cursor: default;
-        border-radius: var(--border-radius);
+        border-radius: var(--ctk-border-radius);
     }
     
     & > img {
@@ -18,7 +18,7 @@ const OptionLanguageStyle = styled.span`
     & > span {
         font-weight: 600;
         font-size: .96em;
-        color: var(--primary-text-color-darker);
+        color: var(--ctk-primary-text-color-darker);
     }
 `
 
@@ -30,24 +30,24 @@ const SelectLanguageStyle = styled.div`
         overflow: hidden;
         opacity: 0; height: 0; 
         left: 0; right: 0;
-        border-bottom-left-radius: var(--border-radius);
-        border-bottom-right-radius: var(--border-radius);
+        border-bottom-left-radius: var(--ctk-border-radius);
+        border-bottom-right-radius: var(--ctk-border-radius);
         
         & > a {
             display: block;
-            color: var(--primary-text-color-darker);
+            color: var(--ctk-primary-text-color-darker);
 
             &:hover,
             &:focus {
                 outline: 0;
-                background-color: var(--third-color);
+                background-color: var(--ctk-third-color);
             }
         }
     }
     
     & > .active,
     & > .options > * {
-      background-color: var(--secondary-color);
+      background-color: var(--ctk-secondary-color);
       
     }
     

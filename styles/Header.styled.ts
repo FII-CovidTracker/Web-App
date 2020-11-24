@@ -5,9 +5,9 @@ export default styled.header`
 & > .nav {
 	& .container {
 		width: 100%;
-		max-width: var(--container-width);
+		max-width: var(--ctk-container-width);
 		margin: 0 auto;
-		padding: 0 var(--general-gap);
+		padding: 0 var(--ctk-general-gap);
 	}
 }
 
@@ -18,9 +18,9 @@ export default styled.header`
 	right: 0;
 	display: grid;
 	align-items: center;
-	height: var(--header-height);
-	background-color: var(--primary-color);
-	z-index: var(--header-z-index);
+	height: var(--ctk-header-height);
+	background-color: var(--ctk-primary-color);
+	z-index: var(--ctk-header-z-index);
 
 	& .container {
 		display: flex;
@@ -32,8 +32,8 @@ export default styled.header`
 
 			& .icon {
 				display: flex;
-				margin-right: var(--general-gap);
-				background-color: var(--primary-text-color-border);
+				margin-right: var(--ctk-general-gap);
+				background-color: var(--ctk-primary-text-color-border);
                 border-radius: 50%;
                 width: 51px;
                 place-items: center;
@@ -41,7 +41,7 @@ export default styled.header`
 
 				img {
 				    margin-top: 2px;
-					height: var(--header-logo-height);
+					height: var(--ctk-header-logo-height);
 					width: 37px;
 					object-fit: contain;
 				}
@@ -51,8 +51,8 @@ export default styled.header`
 				display: grid;
 				align-items: center;
 				text-transform: uppercase;
-				color: var(--primary-text-color);
-				font-family: var(--secondary-font);
+				color: var(--ctk-primary-text-color);
+				font-family: var(--ctk-secondary-font);
 
 				& > span:first-child {
 					font-size: 1.3em;
@@ -69,15 +69,15 @@ export default styled.header`
 		& .header-options {
 			display: grid;
 			grid-auto-flow: column;
-			column-gap: var(--general-gap);
+			column-gap: var(--ctk-general-gap);
 			
 			.connect-container {
 				button {
 					display: flex;
 					align-items: center;
-					gap: var(--general-gap-sm);
+					gap: var(--ctk-general-gap-sm);
 					padding: 8px 12px;
-					background-color: var(--secondary-color);
+					background-color: var(--ctk-secondary-color);
 					border: 0;
 					transition: background-color 200ms ease-in-out;
 
@@ -87,7 +87,7 @@ export default styled.header`
 					}
 
 					&:hover {
-						background-color: var(--primary-text-color-border);
+						background-color: var(--ctk-primary-text-color-border);
 					}
 				}
 			}
@@ -98,11 +98,11 @@ export default styled.header`
 & > .nav {
 	left: 0;
 	right: 0;
-	background-color: var(--primary-color-transparent);
-	border-top: 1px solid var(--primary-text-color-border);
+	background-color: var(--ctk-primary-color-transparent);
+	border-top: 1px solid var(--ctk-primary-text-color-border);
 	box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.5);
-	z-index: var(--nav-z-index);
-	font-family: var(--secondary-font);
+	z-index: var(--ctk-nav-z-index);
+	font-family: var(--ctk-secondary-font);
 
 	& > .container {
 		font-weight: 600;
@@ -111,7 +111,7 @@ export default styled.header`
 
 		nav {
 			display: flex;
-			margin-left: calc(-1 * var(--general-gap));
+			margin-left: calc(-1 * var(--ctk-general-gap));
 
 			.link .icon {
 				// &.icon--about { font-size: 0.8em; }
@@ -133,15 +133,15 @@ export default styled.header`
 		.link {
 			align-items: center;
 			font-size: 0.95em;
-			color: var(--primary-text-color);
-			padding-left: var(--general-gap);
-			padding-right: var(--general-gap);
+			color: var(--ctk-primary-text-color);
+			padding-left: var(--ctk-general-gap);
+			padding-right: var(--ctk-general-gap);
 			border-bottom: 3px solid transparent;
 			transition: background-color 200ms ease-in-out,
 				border-color 300ms ease-in-out;
 
 			&.active {
-				border-color: var(--primary-text-color);
+				border-color: var(--ctk-primary-text-color);
 
 				&:hover {
 					border-color: transparent;
@@ -149,28 +149,28 @@ export default styled.header`
 			}
 
 			&:hover {
-			    color: var(--secondary-color-semitransparent);
-				background-color: var(--accent-color);
+			    color: var(--ctk-secondary-color-semitransparent);
+				background-color: var(--ctk-accent-color);
 			}
 
 			.icon {
-				margin-right: var(--general-gap-hf);
+				margin-right: var(--ctk-general-gap-hf);
 			}
 		}
 
 		.more {
 			button {
 				.text {
-					margin-right: var(--general-gap-hf);
+					margin-right: var(--ctk-general-gap-hf);
 				}
 
 				.burger {
-					margin-left: var(--general-gap-hf);
+					margin-left: var(--ctk-general-gap-hf);
 
 					&,
 					&::before,
 					&::after {
-						background-color: var(--secondary-color);
+						background-color: var(--ctk-secondary-color);
 					}
 
 					&.active {
@@ -196,13 +196,13 @@ export default styled.header`
 
 	&.nav--absolute {
 		position: absolute;
-		top: var(--header-height);
+		top: var(--ctk-header-height);
 
 		& > .container {
 			grid-template-columns: 1fr auto auto;
 
 			.link {
-				height: var(--nav-height);
+				height: var(--ctk-nav-height);
 			}
 		}
 	}
@@ -219,13 +219,13 @@ export default styled.header`
 			}
 
 			.link {
-				height: var(--nav-fixed-height);
+				height: var(--ctk-nav-fixed-height);
 			}
 
 			& .logo-container {
 				display: flex;
 				align-items: center;
-				margin-right: var(--general-gap-md);
+				margin-right: var(--ctk-general-gap-md);
 
 				.logo {
 					display: flex;
@@ -234,9 +234,9 @@ export default styled.header`
 						display: flex;
 						place-items: center;
 						border-radius: 50%;
-						height: var(--nav-logo-height);
-						width: var(--nav-logo-height);
-						background-color: var(--primary-color);
+						height: var(--ctk-nav-logo-height);
+						width: var(--ctk-nav-logo-height);
+						background-color: var(--ctk-primary-color);
 
 						img {
 							height: 70%;

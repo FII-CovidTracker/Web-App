@@ -1,20 +1,20 @@
 import styled from 'styled-components'
 
 export default styled.footer`
-    padding-bottom: var(--general-gap-lg);
+    padding-bottom: var(--ctk-general-gap-lg);
 
     & .container {
         width: 100%; height: 100%;
-        max-width: var(--container-width);
+        max-width: var(--ctk-container-width);
         margin: 0 auto;
-        padding: calc(5px + var(--general-gap)) var(--general-gap) var(--general-gap) var(--general-gap);
-        box-shadow: var(--box-shadow-inset);
-        background-color: var(--primary-color);
+        padding: calc(5px + var(--ctk-general-gap)) var(--ctk-general-gap) var(--ctk-general-gap) var(--ctk-general-gap);
+        box-shadow: var(--ctk-box-shadow-inset);
+        background-color: var(--ctk-primary-color);
         
         display: grid;
         grid-template-columns: auto 1fr auto;
         align-items: center;
-        gap: var(--general-gap);
+        gap: var(--ctk-general-gap);
         border-radius: 2px;
         
         a {
@@ -22,7 +22,7 @@ export default styled.footer`
             transition: box-shadow 150ms ease-out;
             
             &:hover {
-              box-shadow: var(--underline);
+              box-shadow: var(--ctk-underline);
             }
         }
         
@@ -30,12 +30,12 @@ export default styled.footer`
             .dots {
               display: flex;
               gap: 30px;
-              font-family: var(--secondary-font);
+              font-family: var(--ctk-secondary-font);
               font-size: 105%;
     
               & > * {
                 position: relative;
-                color: var(--accent-color);
+                color: var(--ctk-accent-color);
               
                 &:last-child:after { display: none; };
               
@@ -44,7 +44,7 @@ export default styled.footer`
                     position: absolute;
                     display: flex; place-content: center;
                     content: '•';
-                    color: var(--accent-color-transparent);
+                    color: var(--ctk-accent-color-transparent);
                     width: 30px;
                     top: 0; left: 100%;
                 }
@@ -56,7 +56,7 @@ export default styled.footer`
             display: flex;
             align-items: center;
             justify-self: center;
-            color: var(--forth-color);
+            color: var(--ctk-forth-color);
             
             span {
                 padding-bottom: 5px;
@@ -71,20 +71,20 @@ export default styled.footer`
             
             a {
                 margin-left: 3px;
-                color: var(--accent-color);
+                color: var(--ctk-accent-color);
             }
         }   
         
         div:nth-child(3) {
             justify-self: end;
-            font-family: var(--secondary-font);
+            font-family: var(--ctk-secondary-font);
 
             a {
                 display: flex;
                 align-items: center;
-                gap: var(--general-gap-md);
+                gap: var(--ctk-general-gap-md);
                 font-size: 95%;
-                color: var(--primary-text-color);
+                color: var(--ctk-primary-text-color);
                 
                 svg {
                     margin-top: 4px;

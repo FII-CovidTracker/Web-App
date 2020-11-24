@@ -2,13 +2,13 @@ import styled from 'styled-components'
 
 export default styled.article`
     position: relative;
-    margin-bottom: calc(2 * var(--general-gap-lg));
+    margin-bottom: calc(2 * var(--ctk-general-gap-lg));
 
     &::after {
         position: absolute;
         content: '';
-        height: 5px; width: 100%; bottom: calc(-1 * var(--general-gap-lg));
-        background-color: var(--secondary-color);
+        height: 5px; width: 100%; bottom: calc(-1 * var(--ctk-general-gap-lg));
+        background-color: var(--ctk-secondary-color);
     }
 
     &:last-child {
@@ -27,23 +27,23 @@ export default styled.article`
     
     & > .title,
     & > .slug {
-        margin-bottom: var(--general-gap-sm);
+        margin-bottom: var(--ctk-general-gap-sm);
         font-size: 1.3em;
         display: grid;
     }
     
     & > .title {
-        color: var(--primary-text-color);
+        color: var(--ctk-primary-text-color);
     }
 
     & > .slug {
         grid-template-columns: auto auto;
         justify-content: space-between;
         align-items: center;
-        gap: var(--gap-hf);
+        gap: var(--ctk-gap-hf);
 
         & > a {
-            color: var(--primary-text-color);
+            color: var(--ctk-primary-text-color);
 
             &.title {
                 span {
@@ -71,7 +71,7 @@ export default styled.article`
             &:hover {
                 &.title {
                     span {
-                        box-shadow: var(--underline);
+                        box-shadow: var(--ctk-underline);
                     }
                 }
             }
@@ -79,9 +79,9 @@ export default styled.article`
     }
 
     & > .date {
-        margin-bottom: var(--general-gap);
+        margin-bottom: var(--ctk-general-gap);
         font-weight: 700;
-        color: var(--primary-text-color-transparent);
+        color: var(--ctk-primary-text-color-transparent);
         font-size: 0.95em;
     }
 
@@ -97,37 +97,37 @@ export default styled.article`
         font-size: 1.05em;
 
         a {
-            color: var(--primary-text-color);
+            color: var(--ctk-primary-text-color);
             transition: box-shadow 300ms ease-out;
-            box-shadow: 0 -2px 0 0 var(--primary-text-color-transparent) inset, 
+            box-shadow: 0 -2px 0 0 var(--ctk-primary-text-color-transparent) inset, 
                         0 -3px 0 0 transparent inset;
 
             &:hover {
-                box-shadow: var(--underline);
+                box-shadow: var(--ctk-underline);
             }
         }
 
         p {
             text-align: justify;
-            margin-bottom: var(--general-gap-md);
+            margin-bottom: var(--ctk-general-gap-md);
             position: relative;
         }
         
         p > img,
         .image-container > img {
-            display: block; margin: var(--general-gap-lg) auto;
+            display: block; margin: var(--ctk-general-gap-lg) auto;
             max-width: 350px; max-height: 350px;
             object-fit: cover;
-            box-shadow: var(--box-shadow);
+            box-shadow: var(--ctk-box-shadow);
         }
         
         .image-container {
             display: flex;
             justify-content: space-between;
-            background-color: var(--secondary-color);
-            border: 1 solid var(--primary-text-color-transparent);
-            border-radius: var(--border-radius);
-            margin: var(--general-gap-lg) 0;
+            background-color: var(--ctk-secondary-color);
+            border: 1 solid var(--ctk-primary-text-color-transparent);
+            border-radius: var(--ctk-border-radius);
+            margin: var(--ctk-general-gap-lg) 0;
         }
         
         ul {

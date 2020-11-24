@@ -1,4 +1,5 @@
 {
+  "file-loader": "^4.2.0",
   "name": "covidtracker-web-app",
   "version": "1.0.0",
   "description": "FII-CovidTracker Web Application",
@@ -13,18 +14,28 @@
     "type-check": "tsc"
   },
   "dependencies": {
+    "@types/react-router": "^5.1.8",
+    "@zeit/next-css": "^1.0.1",
+    "classnames": "^2.2.6",
+    "file-loader": "^4.2.0",
     "leaflet": "^1.6.0",
     "moment": "^2.27.0",
     "next": "10.0.1",
+    "next-compose-plugins": "^2.2.0",
+    "primeicons": "^4.0.0",
+    "primereact": "^5.0.1",
     "react": "^16.12.0",
     "react-dom": "^16.13.1",
     "react-icons": "^3.11.0",
     "react-leaflet": "^2.7.0",
     "react-player": "^2.6.2",
+    "react-router": "^5.2.0",
+    "react-transition-group": "^2.5.1",
     "react-youtube": "^7.12.0",
     "remark": "^12.0.1",
     "remark-html": "^12.0.0",
-    "styled-components": "^5.1.1"
+    "styled-components": "^5.1.1",
+    "url-loader": "^2.1.0"
   },
   "devDependencies": {
     "@types/node": "^12.12.21",

@@ -1,6 +1,10 @@
 import React, { FC, ReactNode } from 'react'
 import Head from 'next/head'
 
+import 'primereact/resources/themes/md-light-indigo/theme.css'
+import 'primereact/resources/primereact.min.css'
+import 'primeicons/primeicons.css'
+
 import { LocaleType } from '../interfaces'
 
 import TRANSLATION from '../lib/translation'

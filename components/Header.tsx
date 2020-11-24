@@ -46,7 +46,7 @@ const HeaderLogo: FC<{ disableTitle?: boolean }> = ({ disableTitle } = { disable
 }
 
 const HeaderNav: FC<PropsWithChildren<any>> = (props) => {
-
+    const { disableIcons, ...rest } = props
     const { pathname } = useRouter()
     const locale = useLocale()
     const nav = {
@@ -66,13 +66,13 @@ const HeaderNav: FC<PropsWithChildren<any>> = (props) => {
     }
 
     return (
-        <nav {...props}>
+        <nav {...rest}>
             {nav.sections.map((page, index) => {
                 const href = TRANSLATION[page].slug[locale]
                 return (
                     <Link href={href} key={index}>
                         <a className={'link' + (pathname === href ? ' active' : '')}>
-                            {props.disableIcons ? null : nav.icon(page)}
+                            {disableIcons ? null : nav.icon(page)}
                             {TRANSLATION[page][locale]}
                         </a>
                     </Link>

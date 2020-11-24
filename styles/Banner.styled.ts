@@ -12,7 +12,7 @@ export default styled.div`
     & .container {
         position: absolute; height: 100%;
         width: 100%; left: 50%; transform: translateX(-50%);
-        max-width: var(--container-width);
+        max-width: var(--ctk-container-width);
         display: grid;
         align-content: center;
         border-bottom-left-radius: 2px;
@@ -22,7 +22,7 @@ export default styled.div`
     &.image {
         & .background {
             --filter-margin: -10px;
-            left: var(--filter-margin); top: var(--filter-margin); right: var(--filter-margin); bottom: var(--filter-margin);
+            left: var(--ctk-filter-margin); top: var(--ctk-filter-margin); right: var(--ctk-filter-margin); bottom: var(--ctk-filter-margin);
             background-image: url("/assets/banner/background.png");
             background-size: cover;
             background-position: right bottom;
@@ -32,13 +32,13 @@ export default styled.div`
                 position: absolute;
                 content: '';
                 left: 0; top: 0; right: 0; bottom: 0;
-                background-color: var(--primary-text-color-transparent);
+                background-color: var(--ctk-primary-text-color-transparent);
             }
         }
         
         & .container {
-            padding: var(--general-gap);
-            gap: var(--general-gap);
+            padding: var(--ctk-general-gap);
+            gap: var(--ctk-general-gap);
             grid-template-columns: 1fr auto;
             
             & .text,
@@ -47,30 +47,30 @@ export default styled.div`
             }
             
             & .text {
-                color: var(--secondary-color);
+                color: var(--ctk-secondary-color);
                 display: grid;
                 align-content: center;
             
                 h1 {
-                    margin: -1em 0 var(--general-gap) 0;
+                    margin: -1em 0 var(--ctk-general-gap) 0;
                     position: relative;
                     font-size: 2em;
                     font-weight: 600;
                     font-style: italic;
-                    color: var(--secondary-color);
+                    color: var(--ctk-secondary-color);
             
                     &::after {
                         position: absolute;
                         content: '';
-                        bottom: calc(-1 * var(--general-gap-hf)); left: 0;
+                        bottom: calc(-1 * var(--ctk-general-gap-hf)); left: 0;
                         width: 35px; height: 3px;
-                        background-color: var(--secondary-color-transparent);
+                        background-color: var(--ctk-secondary-color-transparent);
                     }
                 }
             
                 p {
                     font-size: 1.1em;
-                    max-width: calc(var(--container-width) * 0.6);
+                    max-width: calc(var(--ctk-container-width) * 0.6);
                 }
             }
         
@@ -80,7 +80,7 @@ export default styled.div`
                 overflow: hidden;
                 text-align: center;
                 box-shadow: 0 0 10px rgba(0, 0, 0, .25);
-                border-radius: var(--border-radius);
+                border-radius: var(--ctk-border-radius);
             
                 img {
                     height: 100%;
@@ -101,7 +101,7 @@ export default styled.div`
             position: absolute;
             content: '';
             left: 0; top: 0; right: 0; bottom: 0;
-            background-color: var(--banner-video-background-color);
+            background-color: var(--ctk-banner-video-background-color);
         }
       
         & .container {
@@ -116,8 +116,8 @@ export default styled.div`
     
     &.intro {
       & .container {
-        padding-top: var(--general-gap-lg);
-        background-color: var(--primary-text-color-border);
+        padding-top: var(--ctk-general-gap-lg);
+        background-color: var(--ctk-primary-text-color-border);
         display: flex;
         justify-content: center;
         

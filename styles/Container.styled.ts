@@ -5,13 +5,13 @@ export default styled.div`
     margin: 0 auto;
     grid-template-columns: 1fr auto;
     width: 100%;
-    max-width: var(--container-width);
-    min-height: var(--container-min-height);
-    padding: var(--general-gap);
+    max-width: var(--ctk-container-width);
+    min-height: var(--ctk-container-min-height);
+    padding: var(--ctk-general-gap);
     padding-bottom: 0;
-    gap: var(--gap);
-    background-color: var(--primary-color);
-    box-shadow: var(--box-shadow);
+    gap: var(--ctk-gap);
+    background-color: var(--ctk-primary-color);
+    box-shadow: var(--ctk-box-shadow);
     border-bottom-left-radius: 2px;
     border-bottom-right-radius: 2px;
     overflow: hidden;
@@ -22,32 +22,32 @@ export default styled.div`
             text-transform: uppercase;
             font-weight: 600;
             font-size: 1em;
-            color: var(--primary-text-color);
+            color: var(--ctk-primary-text-color);
 
             & > span {
                 font-size: 1.1em;
-                padding: 10px var(--gap);
-                background-color: var(--primary-text-color);
-                color: var(--secondary-color);
-                border-radius: var(--border-radius) var(--border-radius) 0 0;
+                padding: 10px var(--ctk-gap);
+                background-color: var(--ctk-primary-text-color);
+                color: var(--ctk-secondary-color);
+                border-radius: var(--ctk-border-radius) var(--ctk-border-radius) 0 0;
             }
 
             & ~ .section {
-                border-radius: 0 var(--border-radius) var(--border-radius) var(--border-radius);
+                border-radius: 0 var(--ctk-border-radius) var(--ctk-border-radius) var(--ctk-border-radius);
             }
         }
 
         & > .section {
-            background-color: var(--primary-color);
-            box-shadow: var(--box-shadow);
-            border-radius: var(--border-radius);
-            margin-bottom: var(--general-gap);
+            background-color: var(--ctk-primary-color);
+            box-shadow: var(--ctk-box-shadow);
+            border-radius: var(--ctk-border-radius);
+            margin-bottom: var(--ctk-general-gap);
         }
     }
 
     & > .content {
         & > .section {
-            padding: var(--gap-md) var(--gap);
+            padding: var(--ctk-gap-md) var(--ctk-gap);
         }
     }
 
@@ -59,15 +59,15 @@ export default styled.div`
             --max-height: 280px;
 
             iframe {
-                width: 100%; height: var(--max-height);
+                width: 100%; height: var(--ctk-max-height);
             }
 
             .leaflet-container {
-                width: 100%; height: var(--max-height);
+                width: 100%; height: var(--ctk-max-height);
             }
 
             & > .container {
-                padding: var(--gap-hf);
+                padding: var(--ctk-gap-hf);
             }
         }
     }
@@ -77,21 +77,21 @@ export default styled.div`
         display: grid;
         grid-template-columns: auto 180px 1fr 315px;
         grid-column-start: 1; grid-column-end: -1;
-        column-gap: var(--general-gap-md);
-        margin: calc(-1 * var(--general-gap)) calc(-1 * var(--general-gap)) 0 calc(-1 * var(--general-gap));
-        box-shadow: var(--box-shadow-inset);
+        column-gap: var(--ctk-general-gap-md);
+        margin: calc(-1 * var(--ctk-general-gap)) calc(-1 * var(--ctk-general-gap)) 0 calc(-1 * var(--ctk-general-gap));
+        box-shadow: var(--ctk-box-shadow-inset);
         align-items: center;
-        font-family: var(--secondary-font);
+        font-family: var(--ctk-secondary-font);
         border-radius: 2px;
         
         & > div { 
-          padding-top: var(--general-gap);
-          padding-bottom: var(--general-gap);
+          padding-top: var(--ctk-general-gap);
+          padding-bottom: var(--ctk-general-gap);
         
           &:first-child {
             display: flex;
             place-items: center;
-            padding: var(--general-gap); 
+            padding: var(--ctk-general-gap); 
             background-color: rgba(255, 255, 255, 0.25);
             margin-top: -1px;
             margin-bottom: -1px;
@@ -113,16 +113,16 @@ export default styled.div`
           }
           
           &:last-child {
-            padding-right: calc(var(--general-gap) + 5px);
+            padding-right: calc(var(--ctk-general-gap) + 5px);
           }
         }
     }
     
     & > .applications {
-        background-color: var(--primary-text-color-ultratransparent);
+        background-color: var(--ctk-primary-text-color-ultratransparent);
         
         & > div {
-          color: var(--primary-text-color-darker);
+          color: var(--ctk-primary-text-color-darker);
        
           &:last-child {
             display: flex;
@@ -136,10 +136,10 @@ export default styled.div`
     }
     
     & > .authority {
-        background-color: var(--accent-color);
+        background-color: var(--ctk-accent-color);
         
         & > div {
-          color: var(--secondary-color-semitransparent);
+          color: var(--ctk-secondary-color-semitransparent);
         
           &:last-child {
             margin: 0 1px;
@@ -147,20 +147,20 @@ export default styled.div`
             & button {
               display: grid;
               grid-template-columns: 1fr auto;
-              padding: 0 var(--general-gap-md);
+              padding: 0 var(--ctk-general-gap-md);
               height: 43px;
               width: 100%;
-              color: var(--secondary-color);
-              border-color: var(--secondary-color-transparent);
+              color: var(--ctk-secondary-color);
+              border-color: var(--ctk-secondary-color-transparent);
               border-width: 2px;
               font-size: 110%;
               font-weight: 600;
               transition: all 150ms ease-in-out;
               
               &:hover {
-                box-shadow: var(--box-shadow);
-                color: var(--accent-color);
-                background-color: var(--secondary-color-semitransparent);
+                box-shadow: var(--ctk-box-shadow);
+                color: var(--ctk-accent-color);
+                background-color: var(--ctk-secondary-color-semitransparent);
               }
               
               span:first-child {
@@ -172,7 +172,7 @@ export default styled.div`
     }
     
     &.main--home {
-      margin: var(--general-gap) auto 0 auto;
+      margin: var(--ctk-general-gap) auto 0 auto;
       min-height: 0;
       background-color: transparent;
       box-shadow: none;
