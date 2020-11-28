@@ -48,7 +48,6 @@ const SelectLanguageStyle = styled.div`
     & > .active,
     & > .options > * {
       background-color: var(--ctk-secondary-color);
-      
     }
     
     &.active,

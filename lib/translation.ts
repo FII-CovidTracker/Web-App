@@ -18,6 +18,18 @@ function translation() {
                 [LOCALE.EN]: 'Read more'
             }
         },
+        authorities: {
+            [LOCALE.RO]: 'Autorități',
+            [LOCALE.EN]: 'Authorities',
+            slug: {
+                [LOCALE.RO]: 'autoritati',
+                [LOCALE.EN]: 'authorities'
+            },
+            portal: {
+                [LOCALE.RO]: 'Portal autorități',
+                [LOCALE.EN]: 'Authorities portal'
+            }
+        },
         footer: {
             madeWith: [
                 {
@@ -50,6 +62,10 @@ function translation() {
             connect: {
                 [LOCALE.RO]: 'Conectează-te!',
                 [LOCALE.EN]: 'Join!'
+            },
+            disconnect: {
+                [LOCALE.RO]: 'Deconectează-te',
+                [LOCALE.EN]: 'Log out'
             },
             settings: {
                 [LOCALE.RO]: 'Preferințe',
@@ -108,7 +124,11 @@ function translation() {
         },
         portal: {
             [LOCALE.RO]: 'Portalul dedicat autorităților',
-            [LOCALE.EN]: 'Authorities portal'
+            [LOCALE.EN]: 'Authorities portal',
+            slug: {
+                [LOCALE.RO]: 'platforma',
+                [LOCALE.EN]: 'portal'
+            }
         },
         title: {
             [LOCALE.RO]: 'FII-CovidTracker',

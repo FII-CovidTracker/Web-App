@@ -22,7 +22,6 @@ const Container: FC<ContainerProps> = ({ data, before, after, children }) => {
     const locale = useLocale()
     const content = new ContainerRender(data, locale).element
 
-
     return (
         <Styles className={`main main--locale-${locale}` + (data.id ? ` main--${data.id}` : null)}>
             {before}

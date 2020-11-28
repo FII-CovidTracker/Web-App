@@ -2,21 +2,27 @@ import React, { FC, PropsWithChildren, useState } from 'react'
 import {
     BiHome as IconHome,
     BiNews as IconNews,
-    // BiUserCircle as IconConnect,
     BiCog as IconSettings,
     BiInfoCircle as IconAbout
 } from 'react-icons/bi'
 import {
-    FaSearch as IconSearch
+    HiOfficeBuilding as IconAuthority
+} from 'react-icons/hi'
+import {
+    FaUserCircle as IconUser
 } from 'react-icons/fa'
+import {
+    IoLogOut as IconLogout
+} from 'react-icons/io5'
 
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 import STATIC from '../data'
 import TRANSLATION from '../lib/translation'
-
+import { useUser } from '../lib/auth/useUser'
 import { useLocale } from '../context/Locale'
+import { LoginRedirect } from '../pages'
 
 import Language from './Language'
 import Styles from '../styles/Header.styled'
@@ -82,26 +88,76 @@ const HeaderNav: FC<PropsWithChildren<any>> = (props) => {
     )
 }
 
-const HeaderSearch: FC = () => {
+const HeaderUser: FC = () => {
+    const { user, logout } = useUser()
+    if (!user) return null
+
     const locale = useLocale()
+    const router = useRouter()
+    const href = LoginRedirect(locale)
+    const { pathname } = router
+
+    document.body.classList.add('extra')
+
+    const Portal = () => (
+        <div className="portal">
+            <Link href={href}>
+                <a className={'link' + (pathname === href ? ' active' : '')}>
+                    <span>{TRANSLATION.authorities.portal[locale]}</span>
+                    <IconAuthority/>
+                </a>
+            </Link>
+        </div>
+    )
+
+    const Controls = () => {
+        const handleLogout = async() => {
+            await logout((error: any) => {
+                if (error) {
+                    console.error(error);
+                    return;
+                }
+
+                document.body.classList.remove('extra')
+
+                if (pathname === href) {
+                    router.push('../../')
+                }
+            })
+        }
+
+        return (
+            <div className="user">
+                <div className="email">
+                    <span>{user.email}</span>
+                    <IconUser/>
+                </div>
+                <div className="menu">
+                    <button onClick={async () => await handleLogout()}>
+                        <span>{TRANSLATION.header.disconnect[locale]}</span>
+                        <IconLogout/>
+                    </button>
+                </div>
+            </div>
+        )
+    }
 
     return (
-        <div className="search">
-            <button className="link" aria-label={TRANSLATION.header.search[locale]}>
-                <IconSearch />
-            </button>
-        </div>
+        <>
+            <Portal/>
+            <Controls/>
+        </>
     )
 }
 
-const HeaderConnect: FC = () => {
+const HeaderPreferences: FC = () => {
     const locale = useLocale()
 
     return (
-        <div className="connect-container">
+        <div className="preferences">
             <button>
                 <IconSettings />
-                {TRANSLATION.header.settings[locale]}
+                <span>{TRANSLATION.header.settings[locale]}</span>
             </button>
         </div>
     )
@@ -134,10 +190,10 @@ const Header: FC = () => {
         <Styles>
             <div className="header">
                 <div className="container">
-                    <HeaderLogo />
+                    <HeaderLogo/>
                     <div className="header-options">
-                        <Language />
-                        <HeaderConnect />
+                        <Language/>
+                        <HeaderPreferences/>
                     </div>
                 </div>
             </div>
@@ -145,7 +201,7 @@ const Header: FC = () => {
                 <div className="container">
                     { fixedHeader ? <HeaderLogo disableTitle /> : null }
                     <HeaderNav />
-                    <HeaderSearch />
+                    <HeaderUser />
                 </div>
             </div>
         </Styles>

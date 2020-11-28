@@ -83,6 +83,12 @@ body {
     -webkit-tap-highlight-color: var(--ctk-primary-text-color-transparent);
 }
 
+@media only screen and (max-width: 790px) {
+    body.extra {
+        padding-top: calc(var(--ctk-header-height) + 2 * var(--ctk-nav-height));
+    }
+}
+
 #__next,
 #__grid {
     width: 100%;

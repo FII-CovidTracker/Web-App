@@ -10,6 +10,7 @@ import {
 import {
   RiLockPasswordFill as IconLoginPassword
 } from 'react-icons/ri'
+import { NextRouter, useRouter } from 'next/router'
 
 import { Button } from 'primereact/button'
 import { Dialog } from 'primereact/dialog'
@@ -21,6 +22,8 @@ import { LocaleType } from '../interfaces'
 import LOCALE from '../lib/locale'
 import TYPES from '../lib/types'
 import TRANSLATION from '../lib/translation'
+import { useUser } from '../lib/auth/useUser'
+import { useLocale } from "../context/Locale";
 
 import Layout from '../components/Layout'
 import Banner from '../components/Banner'
@@ -36,107 +39,160 @@ interface HomePageProps {
   data: any
 }
 
-class LoginDialog {
-  private readonly locale: LocaleType;
+interface LoginDialogProps {
+    visible: boolean,
+    onHide: () => void
+}
 
-  constructor(locale: LocaleType) {
-    this.locale = locale;
-  }
+type UserType = {
+    email: string,
+    password: string
+}
 
-  children() {
-    const locale = this.locale;
+class LoginDialogHandler {
+    private readonly locale: LocaleType;
+    private readonly user: UserType
+    private readonly auth: { login: Function }
+    private readonly router: NextRouter
 
-    return (
-      <LoginDialogStyle>
-        <div className="p-inputgroup">
-        <span className="p-inputgroup-addon">
-            <IconLoginUser/>
-        </span>
-          <InputText placeholder={TRANSLATION.username[locale]} />
-        </div>
-        <div className="p-inputgroup">
-        <span className="p-inputgroup-addon">
-            <IconLoginPassword/>
-        </span>
-          <Password feedback={false} placeholder={TRANSLATION.password[locale]} />
-        </div>
-      </LoginDialogStyle>
-    )
-  }
+    constructor(locale: LocaleType) {
+        this.locale = locale
+        this.user = { email: '', password: '' }
+        this.auth = useUser()
+        this.router = useRouter()
+    }
 
-  header() {
-    const locale = this.locale;
-
-    return (
+    header = () => (
         <LoginDialogHeader>
-          <p>{TRANSLATION.portal[locale]}</p>
+            <p>{TRANSLATION.portal[this.locale]}</p>
         </LoginDialogHeader>
     )
-  }
 
-  footer() {
-    const locale = this.locale;
+    children = () => {
+        const locale = this.locale
 
-    return (
+        return (
+            <LoginDialogStyle>
+                <div className="p-inputgroup">
+                    <span className="p-inputgroup-addon">
+                        <IconLoginUser/>
+                    </span>
+                    <InputText
+                        placeholder={TRANSLATION.username[locale]}
+                        onChange={(e: any) => this.user.email = e.target.value}
+                    />
+                </div>
+                <div className="p-inputgroup">
+                    <span className="p-inputgroup-addon">
+                        <IconLoginPassword/>
+                    </span>
+                    <Password
+                        feedback={false}
+                        placeholder={TRANSLATION.password[locale]}
+                        onChange={(e: any) => this.user.password = e.target.value}
+                    />
+                </div>
+            </LoginDialogStyle>
+        )
+    }
+
+    footer = () => (
         <LoginDialogFooter>
-          <Button label={TRANSLATION.login[locale]}
-            className="p-button-raised"
-            icon="pi pi-sign-in"
-            iconPos="right"
-          />
+            <Button
+                label={TRANSLATION.login[this.locale]}
+                className="p-button-raised"
+                icon="pi pi-sign-in"
+                iconPos="right"
+                onClick={(e: any) => this.handleLogin(e)}
+            />
         </LoginDialogFooter>
     )
-  }
+
+    private async handleLogin(e: any) {
+        e.preventDefault();
+        const { email, password } = this.user
+
+        await this.auth.login(email, password, (error: any, _: any) => {
+            if (error) {
+                console.error(error);
+                return;
+            }
+
+            return this.router.push(LoginRedirect(this.locale))
+        })
+    }
+}
+
+const LoginDialog: FC<LoginDialogProps> = ({ visible, onHide }) => {
+    const locale = useLocale()
+    const loginDialogHandler = new LoginDialogHandler(locale);
+
+    return (
+        <Dialog visible={visible} onHide={onHide}
+                children={loginDialogHandler.children()}
+                header={loginDialogHandler.header()}
+                footer={loginDialogHandler.footer()}
+        />
+    )
+}
+
+const LoginRedirect = (locale: LocaleType) => {
+    let redirect = TRANSLATION.authorities.slug[locale]
+    if (locale === LOCALE.EN) redirect += TRANSLATION.portal.slug[locale]
+    else redirect += `/${TRANSLATION.portal.slug[locale].substr(1).split('/').slice(1).join('/')}`
+    return redirect;
 }
 
 const HomePage: FC<HomePageProps> = ({ locale, data }) => {
-  const banner = data.banner
-  const container = { id: 'home', content: data }
+    const { user } = useUser()
+    const router = useRouter()
+    const banner = data.banner
+    const container = { id: 'home', content: data }
+    const [loginDialog, setLoginDialog] = useState(false)
 
-  const [loginDialog, setLoginDialog] = useState(false)
-  const loginDialogHide = () => { setLoginDialog(false) }
-  const loginDialogShow = () => { setLoginDialog(true) }
-  const loginRendered = new LoginDialog(locale);
+    const handleLogin = () => {
+        if (user) {
+            router.push(LoginRedirect(locale))
+            return
+        }
 
-  const intro = [
-    <div className="applications" key="applications">
-      <div><IconUser/></div>
-      <div>{TRANSLATION.intro.user[locale]}</div>
-      <div>
-        <p>{TRANSLATION.intro.user.advice[locale]}</p>
-      </div>
-      <div>
-        <img src={`/assets/badges/${locale}/android-badge.png`} height={43} alt=""/>
-        <img src={`/assets/badges/${locale}/ios-badge.svg`} height={43} alt=""/>
-      </div>
-    </div>,
-    <div className="authority" key="authority">
-      <div><IconAuthority/></div>
-      <div>{TRANSLATION.intro.authority[locale]}</div>
-      <div>
-        <p>{TRANSLATION.intro.authority.advice[locale]}</p>
-      </div>
-      <div>
-        <button onClick={loginDialogShow}>
-          <span>{TRANSLATION.intro.authority.accessPortal[locale]}</span>
-          <IconClick/>
-        </button>
-      </div>
-    </div>
-  ]
+        setLoginDialog(true)
+    }
 
-  return (
-    <Layout locale={locale}>
-      <Banner data={banner} />
-      <Container data={container} before={intro}/>
+    const intro = [
+        <div className="applications" key="applications">
+            <div><IconUser/></div>
+            <div>{TRANSLATION.intro.user[locale]}</div>
+            <div>
+                <p>{TRANSLATION.intro.user.advice[locale]}</p>
+            </div>
+            <div>
+                <img src={`/assets/badges/${locale}/android-badge.png`} height={43} alt=""/>
+                <img src={`/assets/badges/${locale}/ios-badge.svg`} height={43} alt=""/>
+            </div>
+        </div>,
+        <div className="authority" key="authority">
+            <div><IconAuthority/></div>
+            <div>{TRANSLATION.intro.authority[locale]}</div>
+            <div>
+                <p>{TRANSLATION.intro.authority.advice[locale]}</p>
+            </div>
+            <div>
+                <button onClick={() => handleLogin()}>
+                    <span>{TRANSLATION.intro.authority.accessPortal[locale]}</span>
+                    <IconClick/>
+                </button>
+            </div>
+        </div>
+    ]
 
-      <Dialog visible={loginDialog} onHide={loginDialogHide}
-        children={loginRendered.children()}
-        header={loginRendered.header()}
-        footer={loginRendered.footer()}
-      />
-    </Layout>
-  )
+    return (
+        <Layout locale={locale}>
+          <Banner data={banner}/>
+          <Container data={container} before={intro}/>
+          <LoginDialog visible={loginDialog} onHide={() => setLoginDialog(false)}/>
+        </Layout>
+    )
 }
 
 const HomeContext = (locale: LocaleType) => ({
@@ -144,7 +200,9 @@ const HomeContext = (locale: LocaleType) => ({
     props: {
       locale,
       data: {
-        banner: { type: TYPES.BANNER, data: { type: 'intro' } }
+        banner: {
+            type: TYPES.BANNER, data: { type: 'intro' }
+        }
       }
     }
   })
@@ -153,4 +211,4 @@ const HomeContext = (locale: LocaleType) => ({
 const { getStaticProps } = HomeContext(LOCALE.EN)
 
 export default HomePage
-export { HomeContext, getStaticProps }
+export { HomeContext, LoginRedirect, getStaticProps }

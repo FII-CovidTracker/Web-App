@@ -26,76 +26,94 @@ export default styled.footer`
             }
         }
         
-        div:nth-child(1) {
-            .dots {
-              display: flex;
-              gap: 30px;
-              font-family: var(--ctk-secondary-font);
-              font-size: 105%;
-    
-              & > * {
-                position: relative;
-                color: var(--ctk-accent-color);
-              
-                &:last-child:after { display: none; };
-              
-                &:after {
-                    user-select: none;
-                    position: absolute;
-                    display: flex; place-content: center;
-                    content: '•';
-                    color: var(--ctk-accent-color-transparent);
-                    width: 30px;
-                    top: 0; left: 100%;
+        div {
+            &:nth-child(1) {
+                .dots {
+                    display: flex;
+                    gap: 30px;
+                    font-family: var(--ctk-secondary-font);
+                    font-size: 105%;
+                    
+                    & > * {
+                        position: relative;
+                        color: var(--ctk-accent-color);
+                        
+                        &:last-child:after { display: none; };
+                        
+                        &:after {
+                            user-select: none;
+                            position: absolute;
+                            display: flex; place-content: center;
+                            content: '•';
+                            color: var(--ctk-accent-color-transparent);
+                            width: 30px;
+                            top: 0; left: 100%;
+                        }
+                    }
                 }
-              }
             }
-        }
         
-        div:nth-child(2) {
-            display: flex;
-            align-items: center;
-            justify-self: center;
-            color: var(--ctk-forth-color);
-            
-            span {
-                padding-bottom: 5px;
-            }
-            
-            svg {
-                margin: 0 3px;
-                animation: heartbeat 1s infinite;
-                color: #E91E63;
-                font-size: 128%;
-            }
-            
-            a {
-                margin-left: 3px;
-                color: var(--ctk-accent-color);
-            }
-        }   
-        
-        div:nth-child(3) {
-            justify-self: end;
-            font-family: var(--ctk-secondary-font);
-
-            a {
+            &:nth-child(2) {
                 display: flex;
                 align-items: center;
-                gap: var(--ctk-general-gap-md);
-                font-size: 95%;
-                color: var(--ctk-primary-text-color);
-                
-                svg {
-                    margin-top: 4px;
-                    font-size: 90%;
-                }
+                justify-self: center;
+                color: var(--ctk-forth-color);
                 
                 span {
-                    font-size: 105%;
+                    padding-bottom: 5px;
+                }
+                
+                svg {
+                    margin: 0 3px;
+                    animation: heartbeat 1s infinite;
+                    color: #E91E63;
+                    font-size: 128%;
+                }
+                
+                a {
+                    margin-left: 3px;
+                    color: var(--ctk-accent-color);
+                }
+            }   
+            
+            &:nth-child(3) {
+                justify-self: end;
+                font-family: var(--ctk-secondary-font);
+    
+                a {
+                    display: flex;
+                    align-items: center;
+                    gap: var(--ctk-general-gap-md);
+                    font-size: 95%;
+                    color: var(--ctk-primary-text-color);
+                    
+                    svg {
+                        margin-top: 4px;
+                        font-size: 90%;
+                    }
+                    
+                    span {
+                        font-size: 105%;
+                    }
+                }
+            }   
+        }
+        
+        @media only screen and (max-width: 610px) {
+            grid-template-columns: 1fr;
+            
+            div {
+                &:nth-child(1) {
+                  .dots {
+                    justify-content: center;
+                  }
+                }
+            
+                &:nth-child(3) {
+                    justify-self: center;
                 }
             }
-        }   
+         }
     }
     
     @keyframes heartbeat {
